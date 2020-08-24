@@ -1,10 +1,12 @@
+require('dotenv').config();
+
 const SerialPort = require('serialport');
 var fs = require('fs');
 const { exit, send } = require('process');
 const Process_Theta_Rho = require('./process_theta_rho');
 const { start } = require('repl');
 
-const PORT = "/dev/tty.usbmodem142201";
+const PORT = process.env.MARLIN_ARDUINO_SERIAL_PORT;
 const DEBUG = false;
 
 var paused = false;

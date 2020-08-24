@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 var fs = require('fs')
     , es = require('event-stream');
 
@@ -6,9 +8,9 @@ const fillModeOptions = {
     FIT: 1
 }
 
-const X_SIZE = 640.0;
-const Y_SIZE = 633.0;
-const MARGIN = 130;
+const X_SIZE = process.env.X_SIZE;
+const Y_SIZE = process.env.Y_SIZE;
+const MARGIN = 5;
 const MIN_DISTANCE_FOR_ARC_CMD = 1.0;
 const DISTANCE_PER_ARC_STEP = 1.0;
 const MAX_THETA_FOR_ARC_STEP = Math.PI / 12;

@@ -1,9 +1,11 @@
+require("dotenv").config();
+
 import express from 'express';
 
 const SerialPort = require('serialport');
 const router = express.Router();
 
-const PORT = "/dev/tty.usbmodem142101";
+const PORT = process.env.LED_STRIP_ARDUINO_SERIAL_PORT;
 
 var mode = "0";
 
