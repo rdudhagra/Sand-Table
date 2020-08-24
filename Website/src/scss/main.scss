@@ -1,0 +1,58 @@
+@import "~bootswatch/dist/darkly/variables";
+@import "~bootstrap/scss/bootstrap";
+@import "~bootswatch/dist/darkly/bootswatch";
+
+@import "~react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
+
+@import "./variables.scss";
+
+html,
+body,
+#app,
+#app > div {
+  height: 100%;
+}
+
+body {
+  padding-top: 1em;
+}
+
+.close {
+  margin-left: 0 !important;
+}
+
+.modal-img {
+  display: block;
+}
+
+.icon-btn {
+  color: #eeeeee;
+}
+
+.icon-btn:hover,
+.icon-btn:active {
+  color: #888888;
+}
+
+.numberCircle {
+  display: inline-block;
+  line-height: 0px;
+  text-align: center;
+
+  border-radius: 50%;
+  border: 2px solid $light;
+
+  min-width: 40px;
+
+  font-size: 22px;
+}
+
+.numberCircle span {
+  display: inline-block;
+  text-align: center;
+
+  padding-top: 50%;
+  padding-bottom: 50%;
+
+  color: $light;
+}
