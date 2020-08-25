@@ -1,3 +1,15 @@
+# Sand Table - Customized Marlin Firmware
+
+This is the build of Marlin that I used for my sand table build. The only modifications from stock marlin are in `configuration.h` and `configuration_adv.h`. Most of the changes fall in two categories:
+- Changes everyone makes, like the dimensions of the table, steps per mm, etc.
+- TMC2209-specific settings, such as microstepping and sensorless homing setup
+
+If your sand table follows my setup exactly, this firmware should work out of the box. However, if you make modifications or want to use a newer version of Marlin, making the changes yourself should be fairly simple. Just look for a guide on setting up Marlin for a 3D-printer (but there's no z-axis or extruder, so that gets rid of 90% of the setup), and a guide for setting up the specific stepper driver you plan on using.
+
+<br />
+---
+<br />
+
 # Marlin 3D Printer Firmware
 
 ![GitHub](https://img.shields.io/github/license/marlinfirmware/marlin.svg)
