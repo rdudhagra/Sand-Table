@@ -7,7 +7,11 @@ This is the build of Marlin that I used for my sand table build. The only modifi
 If your sand table follows my setup exactly, this firmware should work out of the box. However, if you make modifications or want to use a newer version of Marlin, making the changes yourself should be fairly simple. Just look for a guide on setting up Marlin for a 3D-printer (but there's no z-axis or extruder, so that gets rid of 90% of the setup), and a guide for setting up the specific stepper driver you plan on using.
 
 <br />
+
 ---
+
+<br />
+<br />
 <br />
 
 # Marlin 3D Printer Firmware
