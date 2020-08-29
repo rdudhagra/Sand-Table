@@ -14,6 +14,9 @@ class Led extends React.Component {
 
     this.modes = ["Off", "Rainbow", "Slow Rainbow", "Color Pulse", "Ambiance"];
 
+    this.colorChanging = false;
+    this.brightnessChanging = false;
+
     this.state = { mode: "" };
   }
 
@@ -49,11 +52,14 @@ class Led extends React.Component {
     });
 
     var onColorChange = (color) => {
+      if(this.colorChanging) return;
+      this.colorChanging = true;
       this.sendCmd(color.hexString);
       this.setState({ mode: color.hexString });
       colorPicker.off("color:change", onColorChange);
       setTimeout(() => {
         colorPicker.on("color:change", onColorChange);
+        this.colorChanging = false;
       }, 250);
     };
 
@@ -62,10 +68,13 @@ class Led extends React.Component {
     this.onColorChange = onColorChange;
 
     var onBrightnessChange = (color) => {
+      if(this.brightnessChanging) return;
+      this.brightnessChanging = true;
       this.sendCmd("!" + Math.round(color.value * 2.55).toString(16));
       brightnessSlider.off("color:change", onBrightnessChange);
       setTimeout(() => {
         brightnessSlider.on("color:change", onBrightnessChange);
+        this.brightnessChanging = false;
       }, 250);
     };
 
