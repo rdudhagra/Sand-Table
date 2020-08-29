@@ -54,16 +54,22 @@ class Led extends React.Component {
       colorPicker.off("color:change", onColorChange);
       setTimeout(() => {
         colorPicker.on("color:change", onColorChange);
-      }, 200);
+      }, 250);
     };
 
     colorPicker.on("color:change", onColorChange);
 
     this.onColorChange = onColorChange;
 
-    brightnessSlider.on("color:change", (color) => {
+    var onBrightnessChange = (color) => {
       this.sendCmd("!" + Math.round(color.value * 2.55).toString(16));
-    });
+      brightnessSlider.off("color:change", onBrightnessChange);
+      setTimeout(() => {
+        brightnessSlider.on("color:change", onBrightnessChange);
+      }, 250);
+    };
+
+    brightnessSlider.on("color:change", onBrightnessChange);
 
     Axios.get("/led/get").then((v) => {
       this.setState({ mode: v.data });
