@@ -22,3 +22,13 @@ The rest of the parameters control the individual modes...these can be left as i
 ## Installing
 
 Using the Arduino IDE (or vscode extension, etc.), upload the firmware to your Arduino. You can then use the sand table webserver to test it, or use the file `util/serial_send.py` to manually send commands.
+
+## Development
+
+### Creating custom modes
+
+To create a new mode, several things must be done:
+1. In `constants.h`, assign a new number to the color mode. The new number must count up from the other modes to work with the webserver (so if modes 0,1,2,3,4,5,6 are set to something, the next mode number must be 7).
+2. Create a new file for your mode. Each mode contains two functions: an init function, that returns a new uint8_t* (can be used to store data about each frame like a counter, etc.), and an update function, that runs once per frame and has access to to the data pointer. See the other modes for an example.
+3. In `mode.h`, update both switch statements with the new mode you just created and the functions from the new file you just created.
+4. In `Website/src/app/components/Led.jsx`, add the new mode to the list `this.modes`.
