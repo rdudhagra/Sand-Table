@@ -3,3 +3,4 @@
 node_modules
 files/*
 dist
+/src/app/public/client.min.js
