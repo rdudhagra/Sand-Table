@@ -45,15 +45,19 @@ router.post('/', function (req, res) {
 
     process_thr_file_to_gcode(filename, () => {
       process_gcode_file_to_png(filename, () => {
-        process_gcode_file_to_png(filename + " (fill)", () => {
-          sharp(__dirname + "/../../files/" + filename + ".png")
-            .resize(100)
-            .toFile(__dirname + "/../../files/" + filename + "-small.png",
-              (err, info) => {
-                res.send('File uploaded!');
-              }
-            );
-        });
+        sharp(__dirname + "/../../files/" + filename + ".png")
+          .extract({ left: 73, top: 73, width: 354, height: 354 }) // See https://www.desmos.com/calculator/rbn4tjbjjd for rationale of numbers
+          .resize(500) // assuming image ("/../../files/" + filename + ".png") is of width/height 500
+          .toFile(__dirname + "/../../files/" + filename + " (fill).png",
+            (err, info) => {
+              sharp(__dirname + "/../../files/" + filename + ".png")
+                .resize(100)
+                .toFile(__dirname + "/../../files/" + filename + "-small.png",
+                  (err, info) => {
+                    res.send('File uploaded!');
+                  }
+                );
+            });
       });
     });
   });
