@@ -28,6 +28,8 @@ This project was developed with the following:
    ```
 2. Visit `http://[ip address of machine]` in a web browser (runs on port 80)
 
+If you want to run this webserver through systemd, the script `start.sh` should assist in this, assuming you're using NVM to manage Node versions.
+
 ## Running the webserver (development)
 1. In the same directory as `package.json`, run
    ```bash
