@@ -8,7 +8,9 @@ import { renameTrack, deleteTrack } from "./playlist_manager";
 
 const router = express.Router();
 
-router.use(fileupload());
+router.use(fileupload({
+  limits: { fileSize: 50 * 1024 * 1024 },
+}));
 
 router.post('/', function (req, res) {
   if (!req.files || Object.keys(req.files).length === 0) {

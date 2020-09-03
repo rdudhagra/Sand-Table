@@ -22,8 +22,8 @@ app.use(express.static(__dirname + "/../src"));
 app.use(express.static(__dirname + "/../files"));
 
 // For handling POST requests
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50MB'}));
+app.use(bodyParser.urlencoded({ extended: false, limit: '50MB' }));
 
 // Add subroutes
 app.use("/file-upload", processupload);
