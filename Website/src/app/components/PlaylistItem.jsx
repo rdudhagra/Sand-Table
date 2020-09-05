@@ -92,7 +92,7 @@ class PlaylistItem extends React.Component {
               }}
             />
           </Modal.Header>
-          <Modal.Body style={{ minHeight: 100 }}>
+          <Modal.Body style={{ minHeight: 100, maxHeight: "calc(100vh - 17em)", overflowY: "scroll"}}>
             {this.props.tracks.map((track, index) => {
               return (
                 <Card

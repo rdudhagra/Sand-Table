@@ -6,7 +6,7 @@ import { Container, Tabs, Tab, Modal, Card } from "react-bootstrap";
 
 import "./../scss/main.scss";
 
-import { IoMdPower, IoMdList, IoMdBulb } from "react-icons/io";
+import { IoMdList, IoMdBulb, IoMdHome } from "react-icons/io";
 import Controls from "./components/Controls.jsx";
 import Tracks from "./components/Tracks.jsx";
 import Led from "./components/Led.jsx";
@@ -170,7 +170,7 @@ class App extends React.Component {
         <Container className="h-100">
           <h1 className="text-center m-0 mb-2">Sand Table</h1>
           <Tabs fill defaultActiveKey="controls">
-            <Tab eventKey="controls" title={<IoMdPower size="1.5em" />}>
+            <Tab eventKey="controls" title={<IoMdHome size="1.5em" />}>
               <Controls
                 currentTrackChangeFn={this.onTrackClickedFn}
                 currentTracks={this.state.currentTracks}
