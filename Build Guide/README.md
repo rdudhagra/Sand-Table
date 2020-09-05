@@ -52,7 +52,7 @@ I wanted to achieve a smooth, glossy black finish for my table. Here are the ste
 This process seems simple when written out, but take your time sanding, especially early-on, otherwise any defects will be seen on the final coats.
 
 ### Assembly (after paint)
-1. Install the legs on the four corners of the table by drilling a hole for the center screw and then tightening a nut/washer from the inside.
+1. Install the legs on the four corners of the table by drilling a hole for the center screw and then tightening a nut/washer from the inside. Take care to ensure that the legs are flush with the end of the table for a polished look.
 2. Cut a hole for the power wire along one of the edges, near the left corner (see later in this guide for some context on where the hole should go).
 
 ## Building the gantry
@@ -91,3 +91,108 @@ Here are a bunch of pictures that should hopefully clarify some things:
 ![](images/2020-09-02-18-35-59.png)
 ![](images/2020-09-02-18-36-15.png)
 ![](images/2020-09-02-18-36-28.png)
+
+## Electronics/Software
+
+While having electronics experience helps, it is not required to build this table. The electrical system is actually quite simple, and while it could be improved for robustness, it works well enough.
+
+1. Install the RAMPS 1.6+ shield onto your Arduino MEGA. Take care to make sure that the pins line up when you push the two boards together. 
+2. Wire up your stepper drivers onto the RAMPS board for the X and Y motor slots. If you are using TMC2209's as per the BOM, make sure to wire up UART mode and sensorless homing functionality, which is explained quite well in https://youtu.be/dOJbSrWVu_Q?t=439 (follow instructions for the MKS Gen L and TMC 2209). Even though it's a different board, the AUX2 header referred in the video can also be found on the RAMPS board. The software should already be configured, so you can skip that step.
+   ![](images/2020-09-05-16-45-50.png)
+3. Install the LED Strip Arduino firmware onto the Arduino UNO, and the Marlin Arduino firmware onto the Arduino MEGA. On a fresh SD Card, install the latest [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/), and configure for headless start (see https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
+4. Wire up the rest of the components per the diagram in `sand_table_electronics_diagram.pdf`. Note that there is a 330 Ohm resistor connecting from the Arduino Uno to the LED Strip `DI` pin. This is extremely important, but any resistor from 220 to 470 ohms will work. If you don't have 330 Ohm resistors (and only the 1000 Ohm resistors from the BOM, you can wire three of those in parallel).
+5. Use double-sided tape or some other adhesive to secure the components down on one side of the table (the same side as the hole you cut for the power wire).
+6. Check and double check that all the connections are secure and correct, and then try powering the whole system on. If all is well, the Pi should boot (red light on, green light blinks a bunch), and nothing else should happen.
+
+Here is an image of the result. Note the power wires running to each corner of the table: this is because I used four separate LED strips where I chained the data pins together...this is not necessary, and I did this only because that is what I had on hand.
+![](images/2020-09-04-15-02-54.png)
+
+### Raspberry Pi Setup/Webserver Installation
+1. ssh into your Raspberry Pi. If you do not know how, this is something that is very easy to google. The default credentials should be `pi` as the username and `raspberry` as the password.
+2. Change the default password to something else (See [this article](https://www.raspberrypi.org/documentation/linux/usage/users.md#:~:text=Once%20you're%20logged%20in,asked%20for%20a%20new%20password.) on how to do this)
+3. Change your hostname if you desire (see [this article](https://www.tomshardware.com/how-to/raspberry-pi-change-hostname#change-raspberry-pi-hostname-at-command-prompt-xa0) on how to do this...I changed my Raspberry Pi's hostname to `sandtable`)
+4. Chances are that NodeJS should be installed, but it's version is outdated. To install the lastest version of NodeJS, type the following into the ssh terminal:
+   ```bash
+   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+   nvm install node
+   npm install -g npm
+   ```
+   If you get an error stating that the command `nvm` cannot be found, try closing your ssh connection and reconnecting.
+
+   To confirm that NodeJS is on the latest version now, type ```node -v``` into the terminal.
+5. Type the following into the ssh terminal:
+   ```bash
+   cd ~/Documents
+   git clone https://github.com/rdudhagra/Sand-Table.git
+   cd Sand-Table/Website
+   npm install
+   ```
+6. Unfortunately, running on port 80 requires root privileges, but running the webserver using `sudo` is a bad idea. Therefore, we must set up an nginx server to act as a proxy.
+   1. Type into a terminal:
+      ```bash
+      nano .env
+      ```
+      Edit the `PRODUCTION_PORT` variable to equal `3000`. Type `Ctrl`+`X`, then `Y` to save and exit.
+   2. Follow the guide [here](https://eladnava.com/binding-nodejs-port-80-using-nginx/#nginx) to set up an nginx server. However, replace the contents of `/etc/nginx/sites-available/node` with:
+      ```nginx
+      server {
+         client_max_body_size 50M;
+
+         listen 80;
+         server_name sandtable.local;
+
+         location / {
+            proxy_set_header   X-Forwarded-For $remote_addr;
+            proxy_set_header   Host $http_host;
+            proxy_pass         "http://127.0.0.1:3000";
+
+            proxy_read_timeout 1800;
+            proxy_connect_timeout 1800;
+            proxy_send_timeout 1800;
+            send_timeout 1800;
+         }
+      }
+      ```
+      This replacement config sets the port to 3000 and increases the max packet size limit, so that larger `.thr` (Sisyphus track format) files can be uploaded to the website.
+7. With nginx set up now, we can try to run our website to make sure that everything works. Type into your terminal:
+   ```bash
+   cd ~/Documents/Sand-Table/Website
+   npm run prod
+   ```
+   Wait a minute or two, then navigate to `http://[your Pi's ip address]` in a web browser. The website should pop up. If not, look for an error in the logs in your terminal, and make sure that nginx is actually running and properly configured. You should be able to turn on the lights at this point, and the gantry should move to the center of the table after homing.
+8. With that confirmed, stop the webserver with `Ctrl+C`. We will now set up a systemd service, which will automatically run the webserver on startup.
+   1. Create a new systemd file
+         ```bash
+         sudo nano /etc/systemd/system/sandtable.service
+         ```
+   2. Paste the following:
+         ```bash
+         [Unit]
+         Description=Runs sand table webserver
+         After=network.target
+
+         [Service]
+         ExecStart=/home/pi/Documents/Sand-Table/Website/start.sh
+         WorkingDirectory=/home/pi/Documents/Sand-Table/Website
+         StandardOutput=inherit
+         StandardError=inherit
+         Restart=always
+         User=pi
+
+         [Install]
+         WantedBy=multi-user.target
+         ```
+   3. Start the systemd process like so:
+      ```bash
+      sudo systemctl start sandtable.service
+      ```
+   4. Confirm that it works by checking the status:
+      ```bash
+      sudo systemctl status sandtable.service
+      ```
+   5. If all is well, enable the service to start automatically on boot:
+      ```bash
+      sudo systemctl enable sandtable.service
+      ```
+
+That's it for the Raspberry Pi! If you see an error in any of these steps, don't hesitate to copy and paste the error into google...someone has most likely encountered the same situation as you, and a solution should be posted on some forum.
