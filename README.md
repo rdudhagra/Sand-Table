@@ -8,6 +8,15 @@ The table is built out of half-inch plywood and some 1x8 pine boards, glued/nail
 
 See the `Build Guide` folder for instructions on my specific build, or visit the other folders for direct access to the software.
 
-![](images/2020-08-30-18-26-09.png)
-![](images/2020-08-30-18-25-48.png)
-![](images/2020-08-30-18-28-23.png)
+![](images/DSC00627.jpeg)
+![](images/DSC00635.jpeg)
+![](images/DSC00630.jpeg)
+![](images/DSC00602.jpeg)
+![](images/DSC00608.jpeg)
+![](images/DSC00617.jpeg)
+![](images/DSC00585.jpeg)
+![](images/DSC00634.jpeg)
+![](images/DSC00632.jpeg)
+![](images/DSC00587.jpeg)
+
+More pictures in the `images` folder...
