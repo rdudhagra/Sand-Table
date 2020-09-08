@@ -1,11 +1,15 @@
-# Webserver
-### A NodeJS webserver with ReactJS and Bootstrap for controlling your sand table remotely
-### Designed by Ravi Dudhagra ([@rdudhagra](https://github.com/rdudhagra))
+<h1>Webserver</h1>
+<h3>A NodeJS webserver with ReactJS and Bootstrap for controlling your sand table remotely</h3>
+
+Designed by Ravi Dudhagra ([@rdudhagra](https://github.com/rdudhagra))
 
 - [Installation Instructions](#installation-instructions)
   - [Prerequisites](#prerequisites)
   - [Building](#building)
-  - [Screenshots](#screenshots)
+  - [Running the webserver](#running-the-webserver)
+  - [Running the webserver (development)](#running-the-webserver-development)
+- [Downloading tracks](#downloading-tracks)
+- [Screenshots](#screenshots)
 
 # Installation Instructions
 
@@ -38,7 +42,15 @@ If you want to run this webserver through systemd, the script `start.sh` should 
    ```
 2. Visit `http://[ip address of machine]:3000` in a web browser (runs on port 3000)
 
-## Screenshots
+# Downloading tracks
+Any `.thr` file compatible with the Sisyphus table will work with this software. A collection of publicly available tracks can be found at the following links:
+- https://github.com/Dithermaster/sisyphus
+- https://github.com/SlightlyLoony/JSisyphus
+- https://github.com/heropup/sisyphus
+- http://thejuggler.net/sisyphus/
+- https://github.com/ddkengr/Sisyphus-threads
+
+# Screenshots
 <img src="images/2020-09-08-16-35-02.png" width="300">
 <img src="images/2020-09-08-16-37-38.png" width="300">
 <img src="images/2020-09-08-16-35-49.png" width="300">
