@@ -5,6 +5,7 @@
 - [Installation Instructions](#installation-instructions)
   - [Prerequisites](#prerequisites)
   - [Building](#building)
+  - [Screenshots](#screenshots)
 
 # Installation Instructions
 
@@ -36,3 +37,14 @@ If you want to run this webserver through systemd, the script `start.sh` should 
    npm start # compiles client files, compiles server files in memory, starts server with nodemon (restarts on file changes)
    ```
 2. Visit `http://[ip address of machine]:3000` in a web browser (runs on port 3000)
+
+## Screenshots
+<img src="images/2020-09-08-16-35-02.png" width="300">
+<img src="images/2020-09-08-16-35-49.png" width="300">
+<img src="images/2020-09-08-16-36-49.png" width="300">
+<img src="images/2020-09-08-16-36-36.png" width="300">
+<img src="images/2020-09-08-16-37-10.png" width="300">
+<img src="images/2020-09-08-16-37-21.png" width="300">
+<img src="images/2020-09-08-16-37-38.png" width="300">
+<img src="images/2020-09-08-16-37-53.png" width="300">
+<img src="images/2020-09-08-16-38-06.png" width="300">
