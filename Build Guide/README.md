@@ -196,3 +196,19 @@ Here is an image of the result. Note the power wires running to each corner of t
       ```
 
 That's it for the Raspberry Pi! If you see an error in any of these steps, don't hesitate to copy and paste the error into google...someone has most likely encountered the same situation as you, and a solution should be posted on some forum.
+
+## Final Assembly
+Now that the software works, we can finish the assembly of the sand table. After confirming that you can access the website from your computer/smartphone and that the gantry moves smoothly, **turn off** your sand table by unplugging the power supply.
+
+1. Add the risers in the four corners of the table and glue them in place. I also zip-tied the magnet in place and added some rubber freezer mats to absorb some of the echo (no clue if this is effective or not).
+   ![](images/2020-09-08-11-48-05.png)
+2. Place the tray on top of the risers. You will then need to power on the table and move the magnet around and make sure that the magnet doesn't rub against the table. You want the magnet as close as possible to the sand tray without touching it. You can find tracks by searching for `sisyphus table tracks` on google. 
+3. Once leveled, attach something white to the top of the tray. I used canvas cloth, which works surprisingly well.
+   ![](images/2020-09-08-11-55-15.png)
+4. Next, it's time to install the led strips. Turn off the table. This will vary based on what LED strip you buy, but attach the strip around the edge of the tray, making sure that the input connector is on the correct corner of the table (the corner closest to the Arduino UNO). To pass the wires beneath the tray, I cut a groove just tall enough for the wires to wrap around and slide beneath the tray (there is a slight gap between the tray and the table walls). 
+   ![](images/2020-09-08-11-58-37.png)
+5. With that done, turn on the table and test that the led strips work. Make sure that they are wired correctly before you turn anything on. If that works, add the two bags of sand and do your best to level it out. While the table can level the middle fine, the edges beyond the gantry's work area should be leveled by hand. 
+6. Add the ring on top, and then place the glass table top on top of the ring. 
+
+That's it...you're done! Your sand table should be fully operational and ready to play some tracks.
+![](images/2020-09-08-12-03-06.png)
