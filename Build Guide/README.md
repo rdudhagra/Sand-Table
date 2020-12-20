@@ -114,6 +114,7 @@ Here is an image of the result. Note the power wires running to each corner of t
 4. Chances are that NodeJS should be installed, but it's version is outdated. To install the lastest version of NodeJS, type the following into the ssh terminal:
    ```bash
    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+   export NVM_DIR="$HOME/.nvm"
    nvm install node
    npm install -g npm
    ```
