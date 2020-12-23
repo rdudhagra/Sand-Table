@@ -1,6 +1,9 @@
 import express from 'express';
 import fs from 'fs';
-import GCodeController from './gcode_controller';
+import path from 'path';
+const { fork } = require('child_process');
+
+const GCodeProcess = fork(path.join(__dirname, "gcode_controller.js"));
 
 const router = express.Router();
 
@@ -9,14 +12,16 @@ var isPaused = false;
 var speed = 100;
 var repeat = false;
 
-GCodeController.setDoneCallback(() => {
+GCodeProcess.on("message", (msg) => {
+    if (msg != "Done") return;
+
     if (currentTracks.length == 0) return;
     if (currentTracks[0] != "") console.log("Done running " + currentTracks[0]);
     if (repeat)
         currentTracks.push(currentTracks.shift());
     else currentTracks.shift();
     setTimeout(() => {
-        if (currentTracks.length > 0) GCodeController.sendFile(currentTracks[0]); // send next track in playlist
+        if (currentTracks.length > 0) GCodeProcess.send({ msg: "sendFile", args: [currentTracks[0]] }); // send next track in playlist
     }, 3000);
     isPaused = false;
 });
@@ -56,7 +61,7 @@ router.post('/setCurrent', function (req, res) {
     currentTracks = req.body.tracks;
     isPaused = false;
     if (currentTracks.length > 0)
-        GCodeController.sendFile(currentTracks[0]);
+        GCodeProcess.send({ msg: "sendFile", args: [currentTracks[0]] });
     res.sendStatus(200);
 });
 
@@ -64,15 +69,15 @@ router.post('/control', function (req, res) {
     switch (req.body.cmd) {
         case "play":
             isPaused = false;
-            GCodeController.resume();
+            GCodeProcess.send({ msg: "resume", args: [] });
             break;
         case "pause":
             isPaused = true;
-            GCodeController.pause();
+            GCodeProcess.send({ msg: "pause", args: [] });
             break;
         case "stop":
             currentTracks = [];
-            GCodeController.stop();
+            GCodeProcess.send({ msg: "stop", args: [] });
             break;
     }
     res.sendStatus(200);
@@ -84,7 +89,7 @@ router.get('/isPaused', function (req, res) {
 
 router.post('/setSpeed', function (req, res) {
     speed = req.body.speed;
-    GCodeController.setSpeed(req.body.speed);
+    GCodeProcess.send({ msg: "setSpeed", args: [req.body.speed] });
     res.sendStatus(200);
 });
 

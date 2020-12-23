@@ -3,6 +3,10 @@ require("dotenv").config();
 var fs = require('fs')
     , es = require('event-stream');
 
+const {
+    Worker, isMainThread, parentPort, workerData
+} = require('worker_threads');
+
 const fillModeOptions = {
     FILL: 0,
     FIT: 1
@@ -269,6 +273,28 @@ function process_file(filename, callback) {
         );
 }
 
+function process_thr_file_to_gcode(filename, callback) {
+    // Use worker thread
+    const id = Math.random(); // Random uuid to distinguish this call from others to avoid race conditions
+    const worker = new Worker(__filename, {
+        workerData: { fn: "process_file", filename: filename, id: id }
+    });
+    worker.on('message', (val) => {
+        if (val == id)
+            callback();
+    });
+}
+
 module.exports.X_SIZE = X_SIZE;
 module.exports.Y_SIZE = Y_SIZE;
-module.exports.process_thr_file_to_gcode = process_file;
+
+if (isMainThread) {
+    module.exports.process_thr_file_to_gcode = process_thr_file_to_gcode;
+} else {
+    // A worker thread has been created, call the requested function
+    switch (workerData.fn) {
+        case "process_file":
+            process_file(workerData.filename, () => parentPort.postMessage(workerData.id));
+            break;
+    }
+}

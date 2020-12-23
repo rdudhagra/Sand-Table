@@ -5,6 +5,10 @@ var process_theta_rho = require("./process_theta_rho");
 var fs = require("fs");
 const sharp = require("sharp");
 
+const {
+    Worker, isMainThread, parentPort, workerData
+} = require('worker_threads');
+
 /*
  * The colors for displaying G0, G1, G2 and G3 commands, each field is a string
  * of an hexadecimal color (ex: "#ff00ff"). If one field is undefined, the
@@ -311,6 +315,29 @@ function process_file(
             }
         });
     });
+}
+
+function process_gcode_file_to_png(filename, callback) {
+    // Use worker thread
+    const id = Math.random(); // Random uuid to distinguish this call from others to avoid race conditions
+    const worker = new Worker(__filename, {
+        workerData: { fn: "process_file", filename: filename, id: id }
+    });
+    worker.on('message', (val) => {
+        if (val == id)
+            callback();
+    });
+}
+
+if (isMainThread) {
+    module.exports.process_gcode_file_to_png = process_gcode_file_to_png;
+} else {
+    // A worker thread has been created, call the requested function
+    switch (workerData.fn) {
+        case "process_file":
+            process_file(workerData.filename, () => parentPort.postMessage(workerData.id));
+            break;
+    }
 }
 
 module.exports.process_gcode_file_to_png = process_file;

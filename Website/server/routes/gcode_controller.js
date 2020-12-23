@@ -334,9 +334,24 @@ setTimeout(() => {
     console.log("GCode Controller Initialized");
 }, 5000);
 
-module.exports.sendFile = sendFile;
-module.exports.pause = pause;
-module.exports.resume = resume;
-module.exports.stop = stop;
-module.exports.setDoneCallback = setDoneCallback;
-module.exports.setSpeed = setSpeed;
+setDoneCallback(() => process.send("Done"));
+
+process.on("message", async ({ msg: msg, args: args }) => {
+    switch (msg) {
+        case "sendFile":
+            sendFile(...args);
+            break;
+        case "pause":
+            pause(...args);
+            break;
+        case "resume":
+            resume(...args);
+            break;
+        case "stop":
+            stop(...args);
+            break;
+        case "setSpeed":
+            setSpeed(...args);
+            break;
+    }
+});

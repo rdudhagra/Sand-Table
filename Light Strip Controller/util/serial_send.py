@@ -1,5 +1,5 @@
 import serial, time
-ser = serial.Serial('/dev/tty.usbmodem142101', 2400, timeout=1)  # open serial port
+ser = serial.Serial('/dev/tty.usbmodem142201', 2400, timeout=1)  # open serial port
 
 time.sleep(4)
 print("Writing command...")
