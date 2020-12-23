@@ -81,20 +81,20 @@ function sendFile(filename) {
 
         var startPos = [parseFloat(firstCmd[1].replace("X", "")), parseFloat(firstCmd[2].replace("Y", ""))];
 
-        if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 50
-            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 50
-            && Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 50
-            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 50)
+        if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175
+            && Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175)
             backwards = false; // End of prev, start of next at center...do nothing special
 
-        else if (Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 50
-            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 50) {
+        else if (Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
 
             // ended at center, but start of next is along the outside
             backwards = true;
 
-        } else if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 50
-            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 50) {
+        } else if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
 
             // ended on outside, but start of next is at center
             backwards = true;
