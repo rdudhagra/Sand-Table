@@ -261,7 +261,7 @@ function process_file(filename, callback) {
             }
 
             // resume the readstream, possibly from a callback
-            inStream.resume();
+            setImmediate(() => inStream.resume());
         })
             .on('error', function (err) {
                 console.log('Error while reading file.', err);
