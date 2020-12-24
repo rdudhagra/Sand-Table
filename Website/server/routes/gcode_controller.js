@@ -102,7 +102,7 @@ function sendFile(filename) {
                 lastCmd = file[file.length - amountFromLast];
             }
             lastCmd = lastCmd.split(' ');
-            lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
+            var lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
 
             if (Math.abs(lastPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
                 && Math.abs(lastPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
@@ -123,7 +123,7 @@ function sendFile(filename) {
                 lastCmd = file[file.length - amountFromLast];
             }
             lastCmd = lastCmd.split(' ');
-            lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
+            var lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
 
             if (Math.abs(lastPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
                 && Math.abs(lastPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
