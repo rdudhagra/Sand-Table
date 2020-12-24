@@ -4,3 +4,4 @@ node_modules
 files/*
 dist
 src/public/client.min.js
+.env

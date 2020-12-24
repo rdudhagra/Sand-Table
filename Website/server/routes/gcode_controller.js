@@ -328,6 +328,8 @@ setTimeout(() => {
         "G90",
         "G28",
         "M220 S100",
+        "M204 P4000 T4000",
+        "M205 J0.0001",
         `G0 X${Process_Theta_Rho.X_SIZE / 2} Y${Process_Theta_Rho.Y_SIZE / 2}`, // center of table
     ];
     sendNextCmd(true); // Run start gcode
