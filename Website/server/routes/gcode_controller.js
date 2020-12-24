@@ -81,20 +81,37 @@ function sendFile(filename) {
 
         var startPos = [parseFloat(firstCmd[1].replace("X", "")), parseFloat(firstCmd[2].replace("Y", ""))];
 
-        if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
-            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175
-            && Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
-            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175)
+        const nextTrackStartsInCenter = Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175;
+
+        const currentTrackEndedInCenter = Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175;
+
+        if (nextTrackStartsInCenter
+            && currentTrackEndedInCenter)
             backwards = false; // End of prev, start of next at center...do nothing special
 
-        else if (Math.abs(endPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
-            && Math.abs(endPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
+        else if (currentTrackEndedInCenter) {
 
             // ended at center, but start of next is along the outside
-            backwards = true;
 
-        } else if (Math.abs(startPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
-            && Math.abs(startPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
+            var amountFromLast = 1;
+            var lastCmd = file[file.length - amountFromLast];
+            while (lastCmd == "") {
+                amountFromLast++;
+                lastCmd = file[file.length - amountFromLast];
+            }
+            lastCmd = lastCmd.split(' ');
+            lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
+
+            if (Math.abs(lastPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+                && Math.abs(lastPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
+                backwards = true;
+            } else {
+                backwards = false; // We don't want to reverse, since we end on the outside too
+            }
+
+        } else if (nextTrackStartsInCenter) {
 
             // ended on outside, but start of next is at center
             backwards = true;
@@ -106,8 +123,14 @@ function sendFile(filename) {
                 lastCmd = file[file.length - amountFromLast];
             }
             lastCmd = lastCmd.split(' ');
+            lastPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
 
-            startPos = [parseFloat(lastCmd[1].replace("X", "")), parseFloat(lastCmd[2].replace("Y", ""))];
+            if (Math.abs(lastPos[0] - Process_Theta_Rho.X_SIZE / 2) < 175
+                && Math.abs(lastPos[1] - Process_Theta_Rho.Y_SIZE / 2) < 175) {
+                backwards = false; // Next track ends in center, so don't reverse
+            } else {
+                startPos = lastPos;
+            }
 
             if (Math.abs(endPos[0] - startPos[0]) > 50 && Math.abs(endPos[1] - startPos[1]) > 50) {
 
