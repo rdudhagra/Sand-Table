@@ -270,7 +270,7 @@ function sendFile(filename) {
         } else {
             var amountFromLast = 1;
             var lastCmd = file[file.length - amountFromLast];
-            while (lastCmd == "") {
+            while (lastCmd == "" || lastCmd.split(' ').length < 3) {
                 amountFromLast++;
                 lastCmd = file[file.length - amountFromLast];
             }
