@@ -1,14 +1,18 @@
 import express from 'express';
 import fs from 'fs';
+import path from 'path';
 import 'array.prototype.move';
 
 const JSON_DIR = __dirname + "/../../files/playlists.json";
 
 var playlists;
-try {
+if (fs.existsSync(JSON_DIR))
     playlists = JSON.parse(fs.readFileSync(JSON_DIR));
-} catch (error) {
+else {
     playlists = {};
+    var dir = path.dirname(JSON_DIR);
+    if (!fs.existsSync(dir))
+        fs.mkdirSync(dir);
     fs.writeFileSync(JSON_DIR, JSON.stringify(playlists));
 }
 
