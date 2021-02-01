@@ -51,12 +51,9 @@ Any `.thr` file compatible with the Sisyphus table will work with this software.
 - https://github.com/ddkengr/Sisyphus-threads
 
 # Screenshots
-<img src="images/2020-09-08-16-35-02.png" width="300">
-<img src="images/2020-09-08-16-37-38.png" width="300">
-<img src="images/2020-09-08-16-35-49.png" width="300">
-<img src="images/2020-09-08-16-36-49.png" width="300">
-<img src="images/2020-09-08-16-36-36.png" width="300">
-<img src="images/2020-09-08-16-37-10.png" width="300">
-<img src="images/2020-09-08-16-37-21.png" width="300">
-<img src="images/2020-09-08-16-37-53.png" width="300">
-<img src="images/2020-09-08-16-38-06.png" width="300">
+
+| | | |
+| :---: | :---: | :---: |
+| <img src="images/2020-09-08-16-35-02.png"> | <img src="images/2020-09-08-16-37-38.png"> | <img src="images/2020-09-08-16-35-49.png"> |
+| <img src="images/2020-09-08-16-36-49.png"> | <img src="images/2020-09-08-16-36-36.png"> | <img src="images/2020-09-08-16-37-10.png"> |
+| <img src="images/2020-09-08-16-37-21.png"> | <img src="images/2020-09-08-16-37-53.png"> | <img src="images/2020-09-08-16-38-06.png"> |
