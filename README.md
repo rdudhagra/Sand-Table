@@ -1,7 +1,7 @@
 <img align="right" src="images/DSC00609.jpeg" width="30%">
 
 # Sand Table
-[![GitHub issues](https://img.shields.io/github/issues/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/issues) [![GitHub license](https://img.shields.io/github/license/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/blob/master/LICENSE) ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/rdudhagra/Sand-Table) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rdudhagra/Sand-Table)
+[![GitHub issues](https://img.shields.io/github/issues/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/issues) [![GitHub license](https://img.shields.io/github/license/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/blob/master/LICENSE) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rdudhagra/Sand-Table)
 
 ### An open-source platform for building DIY sand tables (like the Sisyphus or ZenXY)
 ### Designed by Ravi Dudhagra ([@rdudhagra](https://github.com/rdudhagra))
