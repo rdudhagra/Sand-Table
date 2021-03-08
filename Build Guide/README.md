@@ -136,7 +136,12 @@ Here is an image of the result. Note the power wires running to each corner of t
       ```bash
       nano .env
       ```
-      Edit the `PRODUCTION_PORT` variable to equal `3000`. Type `Ctrl`+`X`, then `Y` to save and exit.
+      Edit the `PRODUCTION_PORT` variable to equal `3000`. Type `Ctrl`+`X`, then `Y` to save and exit. Also make sure that your Serial port variables are correctly set. To find the Serial port of your connected Arduinos, follow the following steps:
+      1. Unplug all USB devices from the Pi
+      2. Run `ls /dev/tty*`, note the output
+      3. Plug in one of the usb devices, run the above command again. The additional entry is the serial port of this device.
+      4. Plug in another device, run the above command again. The additional entry is the serial port of that device.
+      5. Repeat for any additional devices.
    2. Follow the guide [here](https://eladnava.com/binding-nodejs-port-80-using-nginx/#nginx) to set up an nginx server. However, replace the contents of `/etc/nginx/sites-available/node` with:
       ```nginx
       server {
