@@ -1,4 +1,4 @@
-<img align="right" src="images/DSC00609.jpeg" width="30%">
+<img align="right" src="images/thumbnails/DSC00609_thumb.jpeg" width="30%">
 
 # Sand Table
 [![GitHub issues](https://img.shields.io/github/issues/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/issues) [![GitHub license](https://img.shields.io/github/license/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/blob/master/LICENSE) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rdudhagra/Sand-Table)
@@ -14,17 +14,17 @@ See the `Build Guide` folder for instructions on my specific build, or visit the
 
 | | | |
 | :---: | :---: | :---: |
-| ![](images/DSC00627.jpeg) | ![](images/DSC00630.jpeg) | ![](images/DSC00632.jpeg) |
-| ![](images/DSC00633.jpeg) | ![](images/DSC00634.jpeg) | ![](images/DSC00635.jpeg) |
-| ![](images/2021-02-01-18-35-55.png) | ![](images/2021-02-01-18-36-58.png) | ![](images/2021-02-01-18-37-32.png) |
-| ![](images/DSC00638.jpeg) | ![](images/DSC00639.jpeg) | ![](images/DSC00641.jpeg) |
-| ![](images/DSC00591.jpeg) | ![](images/DSC00592.jpeg) | ![](images/DSC00594.jpeg) |
-| ![](images/DSC00585.jpeg) | ![](images/DSC00587.jpeg) | ![](images/DSC00588.jpeg) |
-| ![](images/DSC00606.jpeg) | ![](images/DSC00607.jpeg) | ![](images/DSC00608.jpeg) |
-| ![](images/DSC00596.jpeg) | ![](images/DSC00597.jpeg) | ![](images/DSC00598.jpeg) |
-| ![](images/DSC00599.jpeg) | ![](images/DSC00602.jpeg) | ![](images/DSC00603.jpeg) |
-| ![](images/DSC00609.jpeg) | ![](images/DSC00611.jpeg) | ![](images/DSC00613.jpeg) |
-| ![](images/DSC00614.jpeg) | ![](images/DSC00616.jpeg) | ![](images/DSC00617.jpeg) |
-| ![](images/DSC00618.jpeg) | ![](images/DSC00620.jpeg) | ![](images/DSC00625.jpeg) |
+| ![](images/thumbnails/DSC00627_thumb.jpeg) | ![](images/thumbnails/DSC00630_thumb.jpeg) | ![](images/thumbnails/DSC00632_thumb.jpeg) |
+| ![](images/thumbnails/DSC00633_thumb.jpeg) | ![](images/thumbnails/DSC00634_thumb.jpeg) | ![](images/thumbnails/DSC00635_thumb.jpeg) |
+| ![](images/thumbnails/2021-02-01-18-35-55_thumb.jpeg) | ![](images/thumbnails/2021-02-01-18-36-58_thumb.jpeg) | ![](images/thumbnails/2021-02-01-18-37-32_thumb.jpeg) |
+| ![](images/thumbnails/DSC00638_thumb.jpeg) | ![](images/thumbnails/DSC00639_thumb.jpeg) | ![](images/thumbnails/DSC00641_thumb.jpeg) |
+| ![](images/thumbnails/DSC00591_thumb.jpeg) | ![](images/thumbnails/DSC00592_thumb.jpeg) | ![](images/thumbnails/DSC00594_thumb.jpeg) |
+| ![](images/thumbnails/DSC00585_thumb.jpeg) | ![](images/thumbnails/DSC00587_thumb.jpeg) | ![](images/thumbnails/DSC00588_thumb.jpeg) |
+| ![](images/thumbnails/DSC00606_thumb.jpeg) | ![](images/thumbnails/DSC00607_thumb.jpeg) | ![](images/thumbnails/DSC00608_thumb.jpeg) |
+| ![](images/thumbnails/DSC00596_thumb.jpeg) | ![](images/thumbnails/DSC00597_thumb.jpeg) | ![](images/thumbnails/DSC00598_thumb.jpeg) |
+| ![](images/thumbnails/DSC00599_thumb.jpeg) | ![](images/thumbnails/DSC00602_thumb.jpeg) | ![](images/thumbnails/DSC00603_thumb.jpeg) |
+| ![](images/thumbnails/DSC00609_thumb.jpeg) | ![](images/thumbnails/DSC00611_thumb.jpeg) | ![](images/thumbnails/DSC00613_thumb.jpeg) |
+| ![](images/thumbnails/DSC00614_thumb.jpeg) | ![](images/thumbnails/DSC00616_thumb.jpeg) | ![](images/thumbnails/DSC00617_thumb.jpeg) |
+| ![](images/thumbnails/DSC00618_thumb.jpeg) | ![](images/thumbnails/DSC00620_thumb.jpeg) | ![](images/thumbnails/DSC00625_thumb.jpeg) |
 
 More pictures in the `images` folder...
