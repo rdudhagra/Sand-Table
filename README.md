@@ -1,11 +1,11 @@
-<img align="right" src="images/thumbnails/DSC00609_thumb.jpeg" width="40%">
+<img align="right" src="images/thumbnails/DSC00609_thumb.jpeg" width="38%">
 
 # Sand Table
 [![GitHub issues](https://img.shields.io/github/issues/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/issues) [![GitHub license](https://img.shields.io/github/license/rdudhagra/Sand-Table)](https://github.com/rdudhagra/Sand-Table/blob/master/LICENSE) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/rdudhagra/Sand-Table)
 
 ### An open-source platform for building DIY sand tables (like the Sisyphus or ZenXY)
 ### Designed by Ravi Dudhagra ([@rdudhagra](https://github.com/rdudhagra))
-<img align="right" src="Website/images/2020-09-08-16-37-38.png" width="23%">
+<img align="right" src="Website/images/2020-09-08-16-37-38.png" width="20%">
 
 Inspired by Bruce Shapiro's [Sisyphus Tables](https://sisyphus-industries.com/), I created my own DIY sand table that uses a CoreXY system to create a square-shaped canvas, yet is still fully compatible with Sisyphus Table `.thr` files. 
 
