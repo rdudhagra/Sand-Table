@@ -13,6 +13,8 @@ The table is built out of half-inch plywood and some 1x8 pine boards, glued/nail
 
 See the `Build Guide` folder for instructions on my specific build, or visit the other folders for direct access to the software. Check out the `discussions` tab for other helpful info/troubleshooting advice.
 
+> Check out [@SeanTurner71](https://github.com/SeanTurner71)'s [build video](https://www.youtube.com/watch?v=QCLmVpVkmQY) for an overview of the assembly process and some mesmerizing timelapses!
+
 <br>
 
 | | | |
