@@ -1,10 +1,10 @@
 import serial, time
-ser = serial.Serial('/dev/tty.usbmodem142201', 2400, timeout=1)  # open serial port
+ser = serial.Serial('/dev/tty.usbmodem142201', 115200, timeout=1)  # open serial port
 
 time.sleep(4)
 print("Writing command...")
 
-ser.write(b'#\xff\xcc\x33')
+ser.write(b'[#\xff\xcc\x33]\n')
 
 print(ser.readline())
 print(ser.readline())

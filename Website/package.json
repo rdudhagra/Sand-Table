@@ -25,6 +25,7 @@
     "express-fileupload": "^1.1.9",
     "gcodetogeometry": "^1.0.0",
     "jquery": "^3.5.1",
+    "node-cmd": "^5.0.0",
     "node-sass": "^4.5.3",
     "node-sass-middleware": "^0.11.0",
     "react": "^16.6.3",

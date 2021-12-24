@@ -1,6 +1,7 @@
 import React from "react";
 import iro from "@jaames/iro";
 import { Col, Card } from "react-bootstrap";
+import RangeSlider from "react-bootstrap-range-slider";
 import Axios from "axios";
 
 class Led extends React.Component {
@@ -12,17 +13,17 @@ class Led extends React.Component {
     this.onColorChange;
     this.sendCmd = this.sendCmd.bind(this);
 
-    this.modes = ["Off", "Rainbow", "Slow Rainbow", "Color Pulse", "Ambiance"];
+    this.modes = ["Off", "Rainbow", "Christmas", "Color Pulse", "Ambiance", "Confetti"];
 
     this.colorChanging = false;
     this.brightnessChanging = false;
 
-    this.state = { mode: "" };
+    this.state = { mode: "", speed: 25 };
   }
 
-  sendCmd(modeString) {
+  async sendCmd(modeString) {
     console.log("Sent cmd: " + modeString);
-    Axios.post("/led/set", { cmd: encodeURIComponent(modeString) });
+    await Axios.post("/led/set", { cmd: encodeURIComponent(modeString) });
   }
 
   componentDidMount() {
@@ -51,31 +52,27 @@ class Led extends React.Component {
       ],
     });
 
-    var onColorChange = (color) => {
-      if(this.colorChanging) return;
+    var onColorChange = async (color) => {
+      if (this.colorChanging) return;
       this.colorChanging = true;
-      this.sendCmd(color.hexString);
-      this.setState({ mode: color.hexString });
       colorPicker.off("color:change", onColorChange);
-      setTimeout(() => {
-        colorPicker.on("color:change", onColorChange);
-        this.colorChanging = false;
-      }, 250);
+      this.setState({ mode: color.hexString });
+      await this.sendCmd(color.hexString);
+      colorPicker.on("color:change", onColorChange);
+      this.colorChanging = false;
     };
 
     colorPicker.on("color:change", onColorChange);
 
     this.onColorChange = onColorChange;
 
-    var onBrightnessChange = (color) => {
-      if(this.brightnessChanging) return;
+    var onBrightnessChange = async (color) => {
+      if (this.brightnessChanging) return;
       this.brightnessChanging = true;
-      this.sendCmd("!" + Math.round(color.value * 2.55).toString(16));
       brightnessSlider.off("color:change", onBrightnessChange);
-      setTimeout(() => {
-        brightnessSlider.on("color:change", onBrightnessChange);
-        this.brightnessChanging = false;
-      }, 250);
+      await this.sendCmd("!" + Math.round(color.value * 2.55).toString(16));
+      brightnessSlider.on("color:change", onBrightnessChange);
+      this.brightnessChanging = false;
     };
 
     brightnessSlider.on("color:change", onBrightnessChange);
@@ -99,7 +96,31 @@ class Led extends React.Component {
           className="mt-3 text-center"
           ref={(ref) => (this.brightnessSliderRef = ref)}
         />
-        <Col className="px-4 mt-4">
+        <Col className="mt-3 px-5 text-center d-flex align-items-center flex-row">
+          <h5 className="m-0 mr-4 p-0">Speed: </h5>
+          <span className="w-100">
+            <RangeSlider
+              value={this.state.speed}
+              onChange={(e) => this.setState({ speed: e.target.value })}
+              variant="light"
+              min={1}
+              max={100}
+              tooltip="auto"
+              tooltipLabel={(currentValue) => `${currentValue}`}
+              inputProps={{
+                onMouseUp: () => {
+                  console.log("Set led speed to " + this.state.speed);
+                  this.sendCmd("@" + Math.round(this.state.speed).toString(16));
+                },
+                onTouchEnd: () => {
+                  console.log("Set led speed to " + this.state.speed);
+                  this.sendCmd("@" + Math.round(this.state.speed).toString(16));
+                },
+              }}
+            />
+          </span>
+        </Col>
+        <Col className="px-4 mt-4 pb-5">
           {this.modes.map((name, index) => {
             return (
               <Card

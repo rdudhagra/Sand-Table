@@ -5,10 +5,11 @@
 #include "constants.h"
 #include "off.h"
 #include "rainbow.h"
-#include "slowrainbow.h"
+#include "christmas.h"
 #include "solidcolor.h"
 #include "colorpulse.h"
 #include "ambiance.h"
+#include "confetti.h"
 
 void next_frame(uint8_t mode, CRGB *leds, uint8_t *dat)
 {
@@ -23,8 +24,8 @@ void next_frame(uint8_t mode, CRGB *leds, uint8_t *dat)
     case RAINBOW:
         updateFn = &rainbow;
         break;
-    case SLOW_RAINBOW:
-        updateFn = &slow_rainbow;
+    case CHRISTMAS:
+        updateFn = &christmas;
         break;
     case SOLID_COLOR:
         updateFn = &solid_color;
@@ -34,6 +35,9 @@ void next_frame(uint8_t mode, CRGB *leds, uint8_t *dat)
         break;
     case AMBIANCE:
         updateFn = &ambiance;
+        break;
+    case CONFETTI:
+        updateFn = &confetti;
         break;
     default:
         updateFn = &off; // Turn off by default
@@ -56,14 +60,17 @@ uint8_t *init_dat(uint8_t mode)
     case RAINBOW:
         initFn = *init_rainbow_dat;
         break;
-    case SLOW_RAINBOW:
-        initFn = *init_slow_rainbow_dat;
+    case CHRISTMAS:
+        initFn = *init_christmas_dat;
         break;
     case COLOR_PULSE:
         initFn = &init_color_pulse_dat;
         break;
     case AMBIANCE:
         initFn = &init_ambiance_dat;
+        break;
+    case CONFETTI:
+        initFn = &init_confetti_dat;
         break;
     default:
         initFn = *init_off_dat; // Turn off by default

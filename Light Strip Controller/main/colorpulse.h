@@ -8,7 +8,6 @@
 #define PI 128 // This is with relation to 2pi=256, used by 8-bit FastLED trig funcs
 
 const uint8_t N_OVER_2 = NUM_LEDS / 2;
-const uint16_t PULSE_MAX_RNG_VAL = (uint16_t)(16384.0 * PULSE_FREQUENCY / FRAMES_PER_SECOND);
 const uint8_t A = 255 / NUM_LEDS;
 
 const CRGB BLACK = CRGB(0, 0, 0);
