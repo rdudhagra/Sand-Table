@@ -33,3 +33,7 @@ See the `Build Guide` folder for instructions on my specific build, or visit the
 | ![](images/thumbnails/DSC00618_thumb.jpeg) | ![](images/thumbnails/DSC00620_thumb.jpeg) | ![](images/thumbnails/DSC00625_thumb.jpeg) |
 
 More pictures in the `images` folder...
+
+<a href="https://trackgit.com">
+<img src="https://us-central1-trackgit-analytics.cloudfunctions.net/token/ping/kz3krg1t84fuvjw4ep5k" alt="trackgit-views" />
+</a>
