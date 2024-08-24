@@ -111,7 +111,7 @@ While having electronics experience helps, it is not required to build this tabl
 1. Install the RAMPS 1.6+ shield onto your Arduino MEGA. Take care to make sure that the pins line up when you push the two boards together.
 2. Wire up your stepper drivers onto the RAMPS board for the X and Y motor slots. If you are using TMC2209's as per the BOM, make sure to wire up UART mode and sensorless homing functionality, which is explained quite well in https://youtu.be/dOJbSrWVu_Q?t=439 (follow instructions for the MKS Gen L and TMC 2209). Even though it's a different board, the AUX2 header referred in the video can also be found on the RAMPS board. The software should already be configured, so you can skip that step.
    ![](images/2020-09-05-16-45-50.png)
-3. Install the LED Strip Arduino firmware onto the Arduino UNO, and the Marlin Arduino firmware onto the Arduino MEGA. On a fresh SD Card, install the latest [Raspberry Pi OS](https://www.raspberrypi.org/downloads/raspberry-pi-os/), and configure for headless start (see https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
+3. Install the LED Strip Arduino firmware onto the Arduino UNO, and the Marlin Arduino firmware onto the Arduino MEGA. On a fresh SD Card, install [Raspberry Pi OS with Debian Buster](https://downloads.raspberrypi.com/raspios_armhf/images/raspios_armhf-2021-05-28/2021-05-07-raspios-buster-armhf.zip), and configure for headless start (see https://www.raspberrypi.org/documentation/configuration/wireless/headless.md).
 4. Wire up the rest of the components per the diagram in `sand_table_electronics_diagram.pdf`. Note that there is a 330 Ohm resistor connecting from the Arduino Uno to the LED Strip `DI` pin. This is extremely important, but any resistor from 220 to 470 ohms will work. If you don't have 330 Ohm resistors (and only the 1000 Ohm resistors from the BOM, you can wire three of those in parallel).
 5. Use double-sided tape or some other adhesive to secure the components down on one side of the table (the same side as the hole you cut for the power wire).
 6. Check and double check that all the connections are secure and correct, and then try powering the whole system on. If all is well, the Pi should boot (red light on, green light blinks a bunch), and nothing else should happen.
@@ -132,7 +132,7 @@ Here is an image of the result. Note the power wires running to each corner of t
    export NVM_DIR="$HOME/.nvm"
    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-   nvm install 14.8.0
+   nvm install 14.18.3
    npm install -g npm
    ```
 
