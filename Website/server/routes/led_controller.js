@@ -80,7 +80,7 @@ router.post("/set", function (req, res) {
       if (++send_cnt === 50) {
         clearInterval(cmd_interval);
         cmd_interval = null;
-        cmd_res.sendStatus(200);
+        if(cmd_res) cmd_res.sendStatus(200);
         cmd_res = null;
     }
     }, 5);
