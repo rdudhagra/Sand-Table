@@ -1,3 +1,3 @@
 #!/bin/bash
-. /home/pi/.nvm/nvm.sh
+. "$HOME"/.nvm/nvm.sh
 npm run prod
