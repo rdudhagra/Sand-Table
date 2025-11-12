@@ -25,7 +25,7 @@ See `sand_table_bom.pdf` or `sand_table_bom.xlsx` for a bill of materials. I put
 
 ## CAD Model
 
-In case the below steps weren't clear, or if you want to modify the design yourself, you can find the CAD model of the entire table at https://a360.co/2QLgInO, and just the CoreXY gantry at https://a360.co/31KW79k.
+In case the below steps weren't clear, or if you want to modify the design yourself, you can find the CAD model of the entire table at https://a360.co/3JJuhmI, and just the CoreXY gantry at https://a360.co/43qNaS9.
 
 ## Building the actual table
 
